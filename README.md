@@ -29,6 +29,7 @@ https://raw.githubusercontent.com/nomad70/shadowrocket-rules/main/PlayfulSR.conf
 - 服务域名规则由本仓库独立维护，不再直接依赖第三方规则仓库。
 - V2.2 扩充了国内常用服务，以及 AI、Netflix、YouTube、Spotify、Disney+ 和 Max 的登录、API、播放与必要 CDN 覆盖。
 - V2.3 为 AI 和未匹配境外流量移除 `DIRECT` 路径，并对不支持的 UDP、缺失代理链和代理 QUIC 采用失败关闭策略。
+- V2.4 将 Claude 拆分为严格可信出口，ChatGPT/Gemini 改为可手动固定美国可信或常规 ISP/DC；同时恢复其他代理服务的 QUIC。
 
 ## 使用前检查
 
