@@ -1,0 +1,11 @@
+# PlayfulSR - Google services
+# Last reviewed: 2026-08-24
+
+DOMAIN-KEYWORD,google
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,ggpht.com
+DOMAIN-SUFFIX,1e100.net
+DOMAIN-SUFFIX,googlezip.net
+DOMAIN-SUFFIX,doubleclick.net

@@ -1,0 +1,21 @@
+# PlayfulSR - Mainland services
+# Last reviewed: 2026-08-24
+
+DOMAIN-SUFFIX,jd.com
+DOMAIN-SUFFIX,jd.hk
+DOMAIN-SUFFIX,jdpay.com
+DOMAIN-SUFFIX,jdstatic.com
+DOMAIN-SUFFIX,360buyimg.com
+DOMAIN-SUFFIX,taobao.com
+DOMAIN-SUFFIX,tmall.com
+DOMAIN-SUFFIX,alibaba.com
+DOMAIN-SUFFIX,alicdn.com
+DOMAIN-SUFFIX,alipay.com
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,wechat.com
+DOMAIN-SUFFIX,weixin.com
+DOMAIN-SUFFIX,weixinbridge.com
+DOMAIN-SUFFIX,qpic.cn
+DOMAIN-SUFFIX,gtimg.com
+DOMAIN-SUFFIX,tenpay.com
+DOMAIN-SUFFIX,modelscope.cn

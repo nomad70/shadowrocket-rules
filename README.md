@@ -6,6 +6,7 @@
 
 - `PlayfulSR.conf`：可直接通过 URL 导入 Shadowrocket 的稳定配置。
 - `NODE_NAMING.md`：国家、IP 属性和流量属性的节点命名规范。
+- `rules/`：按服务拆分、由本仓库维护的在线规则文件。
 
 ## 导入地址
 
@@ -17,18 +18,20 @@ https://raw.githubusercontent.com/nomad70/shadowrocket-rules/main/PlayfulSR.conf
 
 - 国内域名和中国 IP 默认直连。
 - 未匹配流量默认代理。
-- ChatGPT、Gemini、Claude 使用独立的美国住宅 IP 策略组。
+- ChatGPT、Gemini、Claude 使用独立的美国可信 IP 策略组。
 - Ollama、LM Studio、Hugging Face 等模型下载使用无限/大流量节点组。
 - YouTube、Spotify、Disney+、HBO Max、Netflix 使用独立策略组。
-- Bybit 可在德国、日本和荷兰节点间单独选择。
+- Bybit 优先使用德国 Rabisu 可信出口，也可在日本、德国通用组和荷兰之间切换。
+- `RELAY` 中转节点自动排除出所有最终出口组。
+- 服务域名规则由本仓库独立维护，不再直接依赖第三方规则仓库。
 
 ## 使用前检查
 
-1. 按 `NODE_NAMING.md` 为住宅 IP、无限流量和大流量节点添加规范标签。
+1. 按 `NODE_NAMING.md` 为可信出口、无限流量和大流量节点添加规范标签。
 2. 导入配置后检查各国家组和属性组是否包含预期节点。
-3. 为 AI 服务手动固定一个已确认的美国住宅 IP。
+3. 为 AI 服务手动固定一个已验证的美国可信 IP。
 4. 不要向本仓库提交订阅 URL、代理凭据、私钥、证书或未脱敏日志。
 
-## 外部规则
+## 规则维护
 
-配置只引用少量专项在线规则，来源为 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)。外部规则的版权和许可证归其原项目所有。
+规则拆分在 `rules/` 目录中。新增域名时只修改对应服务文件，并在发布前做语法、重复项和敏感信息检查。规则文件不包含节点、订阅地址、凭据或连接日志。
