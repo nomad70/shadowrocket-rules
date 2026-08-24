@@ -7,6 +7,8 @@
 - `PlayfulSR.conf`：可直接通过 URL 导入 Shadowrocket 的稳定配置。
 - `NODE_NAMING.md`：国家、IP 属性和流量属性的节点命名规范。
 - `rules/`：按服务拆分、由本仓库维护的在线规则文件。
+- `AI_PRIVACY.md`：AI 服务防本地 IP 泄漏边界和 Shadowrocket 必要设置。
+- `LICENSE`：PlayfulSR 自身内容采用的 MIT 许可证。
 - `THIRD_PARTY_NOTICES.md`：规则参考来源与第三方许可证说明。
 
 ## 导入地址
@@ -26,6 +28,7 @@ https://raw.githubusercontent.com/nomad70/shadowrocket-rules/main/PlayfulSR.conf
 - `RELAY` 中转节点自动排除出所有最终出口组。
 - 服务域名规则由本仓库独立维护，不再直接依赖第三方规则仓库。
 - V2.2 扩充了国内常用服务，以及 AI、Netflix、YouTube、Spotify、Disney+ 和 Max 的登录、API、播放与必要 CDN 覆盖。
+- V2.3 为 AI 和未匹配境外流量移除 `DIRECT` 路径，并对不支持的 UDP、缺失代理链和代理 QUIC 采用失败关闭策略。
 
 ## 使用前检查
 
@@ -33,9 +36,14 @@ https://raw.githubusercontent.com/nomad70/shadowrocket-rules/main/PlayfulSR.conf
 2. 导入配置后检查各国家组和属性组是否包含预期节点。
 3. 为 AI 服务手动固定一个已验证的美国可信 IP。
 4. 不要向本仓库提交订阅 URL、代理凭据、私钥、证书或未脱敏日志。
+5. 按 `AI_PRIVACY.md` 开启 Shadowrocket“始终开启”，并保持全局路由为“配置”。
 
 ## 规则维护
 
 规则拆分在 `rules/` 目录中。新增域名时只修改对应服务文件，并在发布前做语法、重复项和敏感信息检查。规则文件不包含节点、订阅地址、凭据或连接日志。
 
 部分服务规则参考 V2Fly `domain-list-community` 的 MIT 许可数据，并由本仓库转换、筛选和维护；运行时不会直接下载该第三方仓库。详情见 `THIRD_PARTY_NOTICES.md`。
+
+## 许可证
+
+PlayfulSR 自身的配置和文档使用 MIT License；第三方规则来源继续遵循各自许可证，详见 `THIRD_PARTY_NOTICES.md`。
