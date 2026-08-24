@@ -1,11 +1,18 @@
 # PlayfulSR - Disney+
 # Last reviewed: 2026-08-24
+# Streaming-focused subset curated with reference to v2fly/domain-list-community (MIT)
 
 DOMAIN-SUFFIX,disneyplus.com
 DOMAIN-SUFFIX,disney-plus.net
 DOMAIN-SUFFIX,disneystreaming.com
 DOMAIN-SUFFIX,disney.com
 DOMAIN-SUFFIX,bamgrid.com
+DOMAIN-SUFFIX,bamtech.net
 DOMAIN-SUFFIX,dssott.com
 DOMAIN-SUFFIX,dmed.technology
 DOMAIN-SUFFIX,edgedatg.com
+DOMAIN-SUFFIX,disneyaccount.com
+DOMAIN-SUFFIX,disneysubscription.com
+DOMAIN-SUFFIX,streamingdisney.net
+DOMAIN,disneyplus.bn5x.net
+DOMAIN,disneyplus.com.ssl.sc.omtrdc.net

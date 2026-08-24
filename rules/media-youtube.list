@@ -1,12 +1,21 @@
 # PlayfulSR - YouTube
 # Last reviewed: 2026-08-24
+# Compact coverage based on v2fly/domain-list-community (MIT)
 
+DOMAIN-KEYWORD,youtube
 DOMAIN-SUFFIX,youtube.com
 DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,youtube-nocookie.com
 DOMAIN-SUFFIX,youtube.googleapis.com
 DOMAIN-SUFFIX,youtubei.googleapis.com
+DOMAIN-SUFFIX,youtubeembeddedplayer.googleapis.com
 DOMAIN-SUFFIX,googlevideo.com
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,withyoutube.com
+DOMAIN-SUFFIX,youtubekids.com
+DOMAIN-SUFFIX,youtubeeducation.com
+DOMAIN-SUFFIX,youtubegaming.com
+DOMAIN-SUFFIX,youtubemobilesupport.com
+DOMAIN,yt3.googleusercontent.com

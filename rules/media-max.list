@@ -1,13 +1,27 @@
 # PlayfulSR - HBO and Max
 # Last reviewed: 2026-08-24
+# Streaming-focused subset curated with reference to v2fly/domain-list-community (MIT)
 
 DOMAIN-SUFFIX,max.com
 DOMAIN-SUFFIX,maxgo.com
 DOMAIN-SUFFIX,hbo.com
+DOMAIN-SUFFIX,hbo.eu
+DOMAIN-SUFFIX,hboaccess.com
 DOMAIN-SUFFIX,hbomax.com
+DOMAIN-SUFFIX,hbomax.eu
 DOMAIN-SUFFIX,hbomaxcdn.com
 DOMAIN-SUFFIX,hbonow.com
 DOMAIN-SUFFIX,hbogo.com
 DOMAIN-SUFFIX,hbogoasia.com
+DOMAIN-SUFFIX,hbogoasia.hk
+DOMAIN-SUFFIX,hbogoasia.id
+DOMAIN-SUFFIX,hbogoasia.my
+DOMAIN-SUFFIX,hbogoasia.ph
+DOMAIN-SUFFIX,hbogoasia.sg
+DOMAIN-SUFFIX,hbogoasia.tw
 DOMAIN-SUFFIX,hboasia.com
 DOMAIN-SUFFIX,warnermediacdn.com
+DOMAIN,hbo.com.c.footprint.net
+DOMAIN,hbo.com.edgesuite.net
+DOMAIN,hbo.map.fastly.net
+DOMAIN,hbomaxdash.s.llnwi.net

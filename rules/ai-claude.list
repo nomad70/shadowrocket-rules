@@ -1,5 +1,6 @@
 # PlayfulSR - Anthropic Claude
 # Last reviewed: 2026-08-24
+# Main domains follow Anthropic product and network documentation
 
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.com

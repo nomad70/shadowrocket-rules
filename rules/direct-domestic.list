@@ -19,3 +19,61 @@ DOMAIN-SUFFIX,qpic.cn
 DOMAIN-SUFFIX,gtimg.com
 DOMAIN-SUFFIX,tenpay.com
 DOMAIN-SUFFIX,modelscope.cn
+
+# Baidu
+DOMAIN-SUFFIX,baidu.com
+DOMAIN-SUFFIX,baidubce.com
+DOMAIN-SUFFIX,bcebos.com
+DOMAIN-SUFFIX,bdimg.com
+DOMAIN-SUFFIX,bdstatic.com
+
+# Bilibili and domestic video
+DOMAIN-SUFFIX,bilibili.com
+DOMAIN-SUFFIX,biliapi.com
+DOMAIN-SUFFIX,bilivideo.com
+DOMAIN-SUFFIX,hdslb.com
+DOMAIN-SUFFIX,iqiyi.com
+DOMAIN-SUFFIX,qiyi.com
+DOMAIN-SUFFIX,youku.com
+DOMAIN-SUFFIX,tudou.com
+
+# ByteDance mainland products
+DOMAIN-SUFFIX,douyin.com
+DOMAIN-SUFFIX,douyinvod.com
+DOMAIN-SUFFIX,douyinpic.com
+DOMAIN-SUFFIX,amemv.com
+DOMAIN-SUFFIX,snssdk.com
+DOMAIN-SUFFIX,toutiao.com
+DOMAIN-SUFFIX,toutiaocdn.com
+DOMAIN-SUFFIX,ixigua.com
+
+# Common mainland services
+DOMAIN-SUFFIX,meituan.com
+DOMAIN-SUFFIX,meituan.net
+DOMAIN-SUFFIX,dianping.com
+DOMAIN-SUFFIX,pinduoduo.com
+DOMAIN-SUFFIX,yangkeduo.com
+DOMAIN-SUFFIX,kuaishou.com
+DOMAIN-SUFFIX,gifshow.com
+DOMAIN-SUFFIX,zhihu.com
+DOMAIN-SUFFIX,zhimg.com
+DOMAIN-SUFFIX,weibo.com
+DOMAIN-SUFFIX,sina.com
+DOMAIN-SUFFIX,sinaimg.com
+DOMAIN-SUFFIX,ctrip.com
+DOMAIN-SUFFIX,tripcdn.com
+
+# Xiaomi and NetEase
+DOMAIN-SUFFIX,mi.com
+DOMAIN-SUFFIX,miui.com
+DOMAIN-SUFFIX,xiaomi.com
+DOMAIN-SUFFIX,xiaomi.net
+DOMAIN-SUFFIX,163.com
+DOMAIN-SUFFIX,126.com
+DOMAIN-SUFFIX,127.net
+DOMAIN-SUFFIX,netease.com
+DOMAIN-SUFFIX,youdao.com
+
+# Alibaba and Tencent mainland cloud portals
+DOMAIN-SUFFIX,aliyun.com
+DOMAIN-SUFFIX,qcloud.com

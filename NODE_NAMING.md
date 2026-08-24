@@ -102,7 +102,7 @@ NG-RES-STD-ABV-SUBURBAN-DIR-01
 
 `RELAY` 是 Relay（中转），不是 Reality。不再使用容易与 Reality 混淆的 `RLY` 缩写。
 
-V2.1 会识别名称中的完整字段 `-RELAY-`，并将该节点自动排除出默认测速、国家出口、美国可信 IP、无限流量和大流量组。节点本身仍保留在 Shadowrocket 中，可继续作为链式代理的中间跳。
+V2.2 会识别名称中的完整字段 `-RELAY-`，并将该节点自动排除出默认测速、国家出口、美国可信 IP、无限流量和大流量组。节点本身仍保留在 Shadowrocket 中，可继续作为链式代理的中间跳。
 
 默认情况下，节点就是可选的最终出口，因此不必额外写 `EXIT`。Shadowrocket 已在节点名称下方显示 VLESS、TLS、Reality 等协议信息，通常不必在节点名中重复 `TLS` 或 `REALITY`。
 
