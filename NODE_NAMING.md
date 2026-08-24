@@ -5,24 +5,23 @@
 ## 标准格式
 
 ```text
-CC-NET-CAP-LOCATION-ID
+CC-NET-CAP-LOCATION-PROVIDER-ID
+CC-NET-CAP-LOCATION-PROVIDER-PATH-ID
 ```
 
-字段之间统一使用半角连字符 `-`，标签统一大写，不在标签内使用空格、中文括号或表情符号。
+字段之间统一使用半角连字符 `-`，标签统一大写，不在标签内使用空格、中文括号或表情符号。`PATH` 是可选字段，只在需要区分直连、中转或链式出口时添加。
 
 示例：
 
 ```text
-US-RES-UL-LAX-01
-US-ISP-BIG-NYC-01
-US-DC-STD-SJC-01
-DE-DC-UL-FRA-01
-JP-DC-BIG-TYO-01
-SG-DC-UL-SIN-01
-HK-DC-STD-HKG-01
-NL-DC-UL-AMS-01
-TR-DC-BIG-IST-01
-NG-DC-UL-LAG-01
+US-RES-STD-NYC-PROXYSELLER-VIA-BWG-01
+US-ISP-STD-SLC-IPRAFT-DIR-01
+US-ISP-STD-SLC-IPRAFT-VIA-BWG-01
+US-DC-STD-LAX-BWG-RELAY-01
+DE-DC-UL-FRA-RABISU-01
+JP-DC-BIG-TYO-GC-01
+SG-DC-BIG-SIN-GC-01
+NG-RES-BIG-ABV-SUBURBAN-01
 ```
 
 ## 1. 国家或地区（CC）
@@ -50,17 +49,19 @@ NG-DC-UL-LAG-01
 
 只有在节点提供方或可信的 IP 数据已确认时，才标记 `RES`。“原生”、“解锁”、“低风控”不等于住宅 IP。
 
-## 3. 流量属性（CAP）
+## 3. 流量使用等级（CAP）
 
-| 标签 | 含义 | 配置行为 |
-| --- | --- | --- |
-| `UL` | Unlimited，已确认无限流量 | 进入“无限流量”和“大流量”节点组 |
-| `BIG` | 大流量，但不是无限 | 进入“大流量”节点组 |
-| `STD` | 普通流量/未特别标记 | 不进入上述两个容量组 |
+`CAP` 表示“是否允许路由策略将大流量任务分配给该节点”，不是套餐账面流量的客观记录。
 
-不要因为节点当前“剩余流量多”就标记 `UL`。如果节点仍受套餐总流量限制，应使用 `BIG`。
+| 标签 | 操作定义 | 典型场景 | 配置行为 |
+| --- | --- | --- | --- |
+| `UL` | 已确认无限或近乎无限，且明确允许超大流量任务 | 50～100GB 以上的 AI 模型、镜像、备份、持续下载 | 进入“无限流量”和“大流量”节点组 |
+| `BIG` | 仍有限额，但明确允许承担较大流量 | YouTube/Netflix、数 GB 到数十 GB 下载、`UL` 的备用 | 进入“大流量”节点组 |
+| `STD` | 不允许自动承担大流量，与套餐容量大小无关 | 普通上网、AI 账号、Bybit、住宅 IP、精品线路、中转 | 不进入上述两个容量组 |
 
-## 4. 位置和编号
+即使 BWG 或 IPRAFT 有 2TB 流量，只要主要用于中转、优化线路、身份稳定或普通上网，不希望模型下载自动占用，仍应标记 `STD`。只有已明确分配给高流量任务的计量节点才使用 `BIG`。
+
+## 4. 位置、提供方和编号
 
 `LOCATION` 建议使用三字母城市或机场代码，例如：
 
@@ -77,37 +78,76 @@ NG-DC-UL-LAG-01
 | `IST` | 伊斯坦布尔 |
 | `LAG` | 拉各斯 |
 
-`ID` 使用两位数字，例如 `01`、`02`。如果需要保留机场或线路名，可放在编号后面：
+`PROVIDER` 使用简短且稳定的提供方名称，例如 `BWG`、`IPRAFT`、`RABISU`。`ID` 使用两位数字，例如 `01`、`02`。
+
+## 5. 节点角色与路径（PATH，可选）
+
+| 标签 | 含义 | 例子 |
+| --- | --- | --- |
+| `DIR` | 直接连接的最终出口 | `US-ISP-STD-SLC-IPRAFT-DIR-01` |
+| `VIA-BWG` | 最终出口通过 BWG 中转 | `US-ISP-STD-SLC-IPRAFT-VIA-BWG-01` |
+| `RELAY` | 仅用作中间跳，不是业务需要的最终出口 | `US-DC-STD-LAX-BWG-RELAY-01` |
+| `REALM` | 使用 Realm 转发，仅在需要区分中转实现时添加 | `US-ISP-STD-SLC-IPRAFT-VIA-BWG-REALM-01` |
+
+`RELAY` 是 Relay（中转），不是 Reality。不再使用容易与 Reality 混淆的 `RLY` 缩写。
+
+**当前限制：** V2 配置尚未根据 `RELAY` 标签自动排除节点。只做中间跳的节点不应在 Shadowrocket 中手动选为业务出口。
+
+默认情况下，节点就是可选的最终出口，因此不必额外写 `EXIT`。Shadowrocket 已在节点名称下方显示 VLESS、TLS、Reality 等协议信息，通常不必在节点名中重复 `TLS` 或 `REALITY`。
+
+如果同一出口存在多种必须手动区分的接入方式，可再增加简短后缀：
 
 ```text
-US-RES-UL-LAX-01-IPRAFT
-DE-DC-UL-FRA-01-MYPROVIDER
+US-DC-STD-LAX-BWG-RELAY-TLS-01
+US-ISP-STD-SLC-IPRAFT-DIR-REALITY-01
 ```
 
-规则匹配只依赖前三个字段，后面的文字可自由调整。
+这些协议后缀只用于人工识别，不参与当前分流。
 
-## 5. 配置中的自动识别
+## 6. 最终出口原则
+
+链式节点的国家、IP 属性和流量等级必须描述“网站最终看到的出口”，而不是中间跳。
+
+```text
+中国设备 → 美国 BWG 中转 → 美国 IPRAFT 双 ISP 出口
+```
+
+应命名为：
+
+```text
+US-ISP-STD-SLC-IPRAFT-VIA-BWG-01
+```
+
+只有单独存在、专门作为第一跳的 BWG 节点才命名为：
+
+```text
+US-DC-STD-LAX-BWG-RELAY-01
+```
+
+## 7. 配置中的自动识别
 
 | 节点名 | 国家组 | 住宅组 | 无限流量组 | 大流量组 |
 | --- | --- | --- | --- | --- |
-| `US-RES-UL-LAX-01` | 美国 | 是 | 是 | 是 |
-| `US-ISP-BIG-NYC-01` | 美国 | 否 | 否 | 是 |
-| `DE-DC-UL-FRA-01` | 德国 | 否 | 是 | 是 |
-| `NG-DC-STD-LAG-01` | 尼日利亚 | 否 | 否 | 否 |
+| `US-RES-STD-NYC-PROXYSELLER-VIA-BWG-01` | 美国 | 是 | 否 | 否 |
+| `US-ISP-STD-SLC-IPRAFT-DIR-01` | 美国 | 否 | 否 | 否 |
+| `DE-DC-UL-FRA-RABISU-01` | 德国 | 否 | 是 | 是 |
+| `NG-RES-BIG-ABV-SUBURBAN-01` | 尼日利亚 | 否 | 否 | 是 |
 
 Shadowrocket 实际是用正则表达式读取节点名称，不会自行检测节点是否住宅 IP 或无限流量。标签是本地管理元数据，必须保持真实。
 
-## 6. 订阅节点的注意事项
+## 8. 订阅节点的注意事项
 
 - 订阅更新可能恢复节点提供方的原始名称。
 - 如果手动改名不能持久保留，应在自己控制的订阅生成或本地转换步骤中加标签。
 - 不要将包含 token 的订阅 URL 提交到 GitHub，也不要把订阅链接交给不可信的公共转换服务。
 - 完成改名后，刷新 Shadowrocket 订阅与策略组，然后检查国家组、住宅组和容量组的成员是否正确。
 
-## 7. 新节点命名检查清单
+## 9. 新节点命名检查清单
 
 1. 国家代码是否在最前面。
 2. IP 属性是否有可信依据。
-3. `UL` 是否真的不受套餐总流量限制。
+3. `UL/BIG` 是否真的允许路由策略分配大流量任务。
 4. 标签是否全部大写且使用半角 `-` 分隔。
-5. 节点是否出现在预期的 Shadowrocket 策略组中。
+5. 链式节点的前三个字段是否描述最终出口。
+6. 只做中间跳的节点是否标记 `RELAY`。
+7. 节点是否出现在预期的 Shadowrocket 策略组中。
