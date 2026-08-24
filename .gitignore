@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.env.*
+*.private.conf
+*.mobileconfig
+*.p12
+*.pfx
+*.pem
+*.key
+certificates/
+private/
+subscriptions/
