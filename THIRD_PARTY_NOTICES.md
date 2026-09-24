@@ -5,7 +5,7 @@ PlayfulSR 的部分服务域名规则参考并重新整理自以下公开项目�
 ## V2Fly domain-list-community
 
 - 项目：https://github.com/v2fly/domain-list-community
-- 用途：辅助核对 OpenAI、Netflix、YouTube、Spotify、Disney 和 HBO/Max 的服务域名。
+- 用途：辅助核对 OpenAI、Netflix、YouTube、Spotify、Disney、HBO/Max 和 Bybit 的服务域名。
 - 许可证：MIT License
 
 ```text
