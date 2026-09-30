@@ -1,8 +1,8 @@
 # PlayfulSR 自有规则
 
-本目录保存 PlayfulSR v2.5.0 使用的 Shadowrocket 规则集。配置文件运行时不直接依赖第三方规则仓库，规则由本仓库筛选、转换和维护。
+本目录保存 PlayfulSR v2.5.2 使用的 Shadowrocket 规则集。配置文件运行时不直接依赖第三方规则仓库，规则由本仓库筛选、转换和维护。
 
-每个 `.list` 文件只包含匹配条件，不包含策略名称；具体出口由 `PlayfulSR.conf` 中的 `RULE-SET` 决定。规则按配置文件中的引用顺序匹配，AI 模型下载必须先于普通 AI 和 Google。
+每个 `.list` 文件只包含匹配条件，不包含策略名称；具体出口由 `PlayfulSR.conf` 中的 `RULE-SET` 决定。规则按配置文件中的引用顺序匹配，AI 模型下载必须先于普通 AI 和 Google。Meta 使用与 Claude 同级别的独立可信出口组。
 
 部分服务规则参考 V2Fly `domain-list-community` 的公开 Geosite 数据，并按 Shadowrocket 语法和本配置的实际用途重新筛选。`domain:` 对应 `DOMAIN-SUFFIX`，`full:` 对应 `DOMAIN`；少数无法直接转换的正则表达式，只在范围足够明确时改写为 `DOMAIN-KEYWORD`。来源及许可证见仓库根目录的 `THIRD_PARTY_NOTICES.md`。
 

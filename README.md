@@ -21,10 +21,11 @@ https://raw.githubusercontent.com/nomad70/shadowrocket-rules/main/PlayfulSR.conf
 
 - 国内域名和中国 IP 默认直连。
 - 未匹配流量默认代理。
-- ChatGPT、Gemini、Claude 使用独立的美国可信 IP 策略组。
+- Claude 与 Meta 系服务分别使用只含美国可信 IP 的严格策略组；ChatGPT/Gemini 使用可手动切换美国出口的常规 AI 组。
 - Ollama、LM Studio、Hugging Face 等模型下载使用无限/大流量节点组。
 - YouTube、Spotify、Disney+、HBO Max、Netflix 使用独立策略组。
 - Bybit.com 与通用接口默认使用日本节点；bybit.eu 使用独立的德国节点组。
+- Meta 规则覆盖 Facebook、Instagram、Threads、WhatsApp、Messenger、Meta AI、Muse 及 Quest/Oculus 的已收录第一方域名。
 - 美国海淘站点默认使用美国可信出口；其他解析到美国 IP 的未匹配流量只进入美国节点组。
 - `RELAY` 中转节点自动排除出所有最终出口组。
 - 服务域名规则由本仓库独立维护，不再直接依赖第三方规则仓库。
@@ -35,6 +36,7 @@ https://raw.githubusercontent.com/nomad70/shadowrocket-rules/main/PlayfulSR.conf
 - V2.4.2 为 G2 增加独立的美国 RES/ISP 出口组，并补齐 Bybit 国际版 App 使用的主域名、API 与备用接入域名。
 - V2.5.0 新增美国海淘严格分组与美国 IP 兜底：已收录购物域名默认使用可信美国出口，其他美国 IP 流量只使用普通美国节点。
 - V2.5.1 将 Bybit.com 与通用接口的默认出口调整为日本，并为 bybit.eu 增加独立的德国出口组。
+- V2.5.2 新增 Meta 独立严格策略组，已收录的 Meta 域名只使用美国可信 IP 出口。
 
 ## 使用前检查
 
